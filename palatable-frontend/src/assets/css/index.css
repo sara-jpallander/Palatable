@@ -1,0 +1,13 @@
+/* Fil för att importera diverse css filer */
+
+/* Base */
+@import 'base/config.css';
+@import 'base/global.css';
+@import 'base/reset.css';
+
+/* Components */
+
+
+/* Sections */
+@import 'sections/footer.css';
+@import 'sections/header.css';
