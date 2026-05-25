@@ -18,6 +18,7 @@ ex:
     --color-light: #F8F4F4;
     --color-gray: #3E3E3E;
     --color-pink: #ED8ED4;
+    --color-pink-strong: #ED44C0;
     --color-yellow: #F8DC6B;
     --color-blue: #88DAFD;
 
@@ -39,7 +40,7 @@ ex:
     --fs-label-m: normal normal 500 normal 1.8/auto 'Outfit';
     --fs-label-s: normal normal 400 normal 1.6/auto 'Outfit';
 
-    /* SPACING */
+    /* SPACING - OBS ej klar? */
     --spacing-4xs: 0.4rem;
     --spacing-3xs: 0.8rem;
     --spacing-xxs: 1.2rem;
