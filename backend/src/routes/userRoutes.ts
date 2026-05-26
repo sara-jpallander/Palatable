@@ -80,7 +80,11 @@ async function userLogin(req: Request, res: Response) {
     // Skapa token
     const token = createJWT(user);
 
-    res.status(200).json({ message: "Login successful", token: token, data: user });
+    res.status(200).json({ message: "Login successful", token: token, user: {
+      id: user._id.toString(),
+      name: user.name,
+      email: user.email
+    } });
   } catch (error) {
     res.status(500).json({ message: `Internal server error. Failed to login user. ${error}` });
   }
