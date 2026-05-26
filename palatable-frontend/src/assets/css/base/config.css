@@ -5,7 +5,8 @@
     /* Colors */
     --color-dark: #2C2C2C;
     --color-light: #F8F4F4;
-    --color-gray: #3E3E3E;
+    --color-gray-strong: #3E3E3E;
+    --color-gray-soft: #D5D5D5;
     --color-pink: #ED8ED4;
     --color-pink-strong: #ED44C0;
     --color-yellow: #F8DC6B;
@@ -42,7 +43,9 @@
     --spacing-3xl: 8rem;
 
     --site-margin: var(--spacing-3xl);
+    --gutter: 4rem;
 
+    --border: 1px solid var(--color-gray-soft);
 
 
     /* TODO: mobile variables */

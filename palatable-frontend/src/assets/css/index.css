@@ -4,7 +4,7 @@
 @import 'base/config.css';
 @import 'base/global.css';
 @import 'base/reset.css';
-@import 'base/flex.css';
+@import 'base/layout.css';
 
 /* Components */
 
@@ -12,3 +12,4 @@
 /* Sections */
 @import 'sections/footer.css';
 @import 'sections/header.css';
+@import 'sections/front-page.css';

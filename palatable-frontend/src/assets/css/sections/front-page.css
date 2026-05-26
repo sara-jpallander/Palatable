@@ -1,0 +1,34 @@
+.SiteContainer h1 {
+    margin-left: -1rem;
+    margin-bottom: -2.8rem;
+}
+
+.FrontPage-slogan {
+    font: var(--fs-heading-m);
+}
+
+.FrontPage-intro {
+    margin-top: var(--spacing-3xl);
+}
+
+.FrontPage-intro h2 {
+    font: var(--fs-body-l);
+    margin-bottom: var(--spacing-xxs);
+}
+
+.FrontPage-intro p {
+    margin-bottom: var(--spacing-xl);
+}
+
+.FrontPage-intro button {
+    padding: var(--spacing-xxs) var(--spacing-l);
+    color: var(--color-light);
+    background-color: var(--color-gray-strong);
+    font: var(--fs-label-l);
+    border-radius: 3rem;
+    transition: var(--transition);
+}
+
+.FrontPage-intro button:hover {
+    background-color: var(--color-dark);
+}

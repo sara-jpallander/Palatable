@@ -1,12 +1,10 @@
-/* .HeaderContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-} */
+header {
+    border-bottom: var(--border);
+}
 
-/* header {
-    width: 100%;
-} */
+.HeaderContainer {
+    height: 14rem;
+}
 
 .HeaderContainer-logo {
     width: 31.4rem;
@@ -17,5 +15,27 @@
 }
 
 .HeaderContainer-buttons button {
-    display: inline;
+    font: var(--fs-body-m);
+    mix-blend-mode: multiply;
+    color: var(--color-dark);
+    transition: var(--transition);
+}
+
+.HeaderContainer-buttons button:hover {
+    filter: brightness(105%);
+}
+
+.HeaderButton--login {
+    background-color: var(--color-yellow);
+    padding: var(--spacing-4xs) var(--spacing-l);
+    border-radius: 3rem;
+    
+}
+
+.HeaderButton--register {
+    background-color: var(--color-pink);
+    padding: var(--spacing-4xs) var(--spacing-m) var(--spacing-4xs) 5rem;
+    border-radius: 0 0 0 4rem;
+    corner-shape: bevel;
+    margin-left: -4.5rem;
 }
