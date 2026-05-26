@@ -1,16 +1,5 @@
-/* Variabler för skärmstorlekar för när vi mobilanpassar
-
-ex:
-@media (--s-max-viewport) {
-}
-
-*/
-
-@custom-media --s-max-viewport (max-width: 768px);
-@custom-media --l-max-viewport (max-width: 1024px);
-
-/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Outfit:wght@100..900&display=swap');
+
 
 :root {
     /* Colors */
@@ -25,20 +14,20 @@ ex:
     --transition: 0.2s ease-out;
 
     /* Heading */
-    --fs-heading-l: normal normal 600 normal 12.8/auto 'Cal Sans';
-    --fs-heading-m: normal normal 600 normal 6.2/auto 'Cal Sans';
-    --fs-heading-s: normal normal 600 normal 4.8/auto 'Cal Sans';
-    --fs-heading-xs: normal normal 600 normal 2.4/auto 'Cal Sans';
+    --fs-heading-l: normal normal 300 normal 12.8rem 'Cal Sans';
+    --fs-heading-m: normal normal 300 normal 6.2rem 'Cal Sans';
+    --fs-heading-s: normal normal 300 normal 4.8rem 'Cal Sans';
+    --fs-heading-xs: normal normal 300 normal 2.4rem 'Cal Sans';
 
     /* Body text */
-    --fs-body-l: normal normal 300 normal 3.6/auto 'Outfit';
-    --fs-body-m: normal normal 300 normal 2/auto 'Outfit'; /* Default body text */
-    --fs-body-s: normal normal 300 normal 1.5/auto 'Outfit';
+    --fs-body-l: normal normal 300 normal 3.6rem 'Outfit';
+    --fs-body-m: normal normal 300 normal 2rem 'Outfit'; /* Default body text */
+    --fs-body-s: normal normal 300 normal 1.5rem 'Outfit';
 
     /* Labels - buttons, menu, links, ui etc */
-    --fs-label-l: normal normal 400 normal 2/auto 'Outfit';
-    --fs-label-m: normal normal 500 normal 1.8/auto 'Outfit';
-    --fs-label-s: normal normal 400 normal 1.6/auto 'Outfit';
+    --fs-label-l: normal normal 400 normal 2rem 'Outfit';
+    --fs-label-m: normal normal 500 normal 1.8rem/ 'Outfit';
+    --fs-label-s: normal normal 400 normal 1.6rem 'Outfit';
 
     /* SPACING - OBS ej klar? */
     --spacing-4xs: 0.4rem;
@@ -50,6 +39,18 @@ ex:
     --spacing-l: 3.2rem;
     --spacing-xl: 4.6rem;
     --spacing-xxl: 6.4rem;
+    --spacing-3xl: 8rem;
+
+    --site-margin: var(--spacing-3xl);
+
+
 
     /* TODO: mobile variables */
+    @media (max-width: 1024px) {
+        --spacing-3xl: 4rem;
+    }
+
+    @media (max-width: 769px) {
+        --spacing-3xl: 2rem;
+    }
 }
