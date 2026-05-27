@@ -1,0 +1,30 @@
+/* Typography styles for Fire palette */
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-body);
+  color: var(--color-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  color: var(--color-accent);
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.25rem; }
+h3 { font-size: 1.75rem; }
+
+p {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+}
+
+small {
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-light);
+}
