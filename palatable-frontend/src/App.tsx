@@ -1,6 +1,7 @@
 /* import { useState } from 'react' */
 import './assets/css/index.css'
 import HeaderSection from './components/header'
+import FooterSection from './components/footer'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
           </section>
       </div>
     </main>
+    <FooterSection />
     </>
   )
 }

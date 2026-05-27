@@ -1,0 +1,15 @@
+footer {
+    margin-top: var(--spacing-3xl);
+    border-top: var(--border);
+}
+
+.FooterContainer {
+    display: flex;
+    justify-content: flex-end;
+    padding: var(--spacing-m) 0;
+    margin: 0 var(--site-margin);
+}
+
+.FooterContainer-logo {
+    max-width: 10.2rem;
+}
