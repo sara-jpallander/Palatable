@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+
+:root {
+  /* Colors */
+  --color-primary:    #1B4F72;
+  --color-secondary:  #AED6F1;
+  --color-accent:     #F39C12;
+  --color-background: #F0F3F4;
+  --color-text:       #0D1B2A;
+
+  /* Typography */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body:    'Lato', Arial, sans-serif;
+
+  --font-size-base: 1rem;
+  --font-size-lg:   1.25rem;
+  --font-size-xl:   2rem;
+
+  --font-weight-light:  300;
+  --font-weight-normal: 400;
+  --font-weight-bold:   700;
+
+  --line-height-body:    1.6;
+  --line-height-heading: 1.2;
+}

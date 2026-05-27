@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  /* Colors */
+  --color-primary:    #2D4A3E;
+  --color-secondary:  #7EB09B;
+  --color-accent:     #D4A853;
+  --color-background: #F7F5F0;
+  --color-text:       #1A1A1A;
+
+  /* Typography */
+  --font-heading: 'DM Serif Display', Georgia, serif;
+  --font-body:    'DM Sans', Arial, sans-serif;
+
+  --font-size-base: 1rem;
+  --font-size-lg:   1.25rem;
+  --font-size-xl:   2rem;
+
+  --font-weight-light:  300;
+  --font-weight-normal: 400;
+  --font-weight-bold:   500;
+
+  --line-height-body:    1.6;
+  --line-height-heading: 1.2;
+}
