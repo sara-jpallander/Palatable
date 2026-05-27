@@ -1,17 +1,14 @@
-import {useState} from 'react';
-import LoginForm from '../components/Forms/loginForm';
-import SignupForm from '../components/Forms/signupForm';
+import { useState } from "react";
+import LoginForm from "../components/Forms/loginForm";
+import SignupForm from "../components/Forms/signupForm";
 
 const profilePage = () => {
-
-   
-
-  return ( 
+  return (
     <>
-   <LoginForm />
-   <SignupForm />
+      <LoginForm />
+      <SignupForm />
     </>
-  )
-}
+  );
+};
 
-export default profilePage
+export default profilePage;
