@@ -6,8 +6,7 @@ footer {
 .FooterContainer {
     display: flex;
     justify-content: flex-end;
-    padding: var(--spacing-m) 0;
-    margin: 0 var(--site-margin);
+    padding: var(--spacing-xs) 0;
 }
 
 .FooterContainer-logo {
