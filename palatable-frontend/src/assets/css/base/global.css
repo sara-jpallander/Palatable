@@ -4,11 +4,9 @@
     align-items: center;
 } */
 
-#root > * {
-    display: flex;
-    flex-direction: column;
+/* #root > * {
     align-items: center;
-}
+} */
 
 h1,
 h2,
@@ -34,6 +32,8 @@ p {
 .FooterContainer {
     max-width: 1440px;
     margin: 0 var(--site-margin);
+    justify-self: center;
+    width: calc(100% - var(--site-margin));
 }
 
 .SiteContainer {
