@@ -2,7 +2,7 @@
 import "./assets/css/index.css";
 import HeaderSection from "./components/header";
 import FooterSection from "./components/footer";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProfilePage from "./pages/profilePage";
 import MainPage from "./pages/mainPage";
 
