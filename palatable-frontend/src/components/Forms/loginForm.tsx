@@ -1,11 +1,14 @@
 import {useState, type ChangeEvent, type SubmitEvent} from 'react';
 import { useAuthStore } from '../../store/authStore';
+import { useNavigate } from 'react-router';
 
 const loginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const login = useAuthStore((state) => state.login);
+    
+    const navigate = useNavigate();
 
     const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
@@ -36,6 +39,7 @@ const loginForm = () => {
               }
            
               login(data.token, data.user)
+              navigate('/');
         }
         catch(error){
           console.error(error);

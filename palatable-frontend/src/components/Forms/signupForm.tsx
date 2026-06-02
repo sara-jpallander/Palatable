@@ -1,10 +1,13 @@
 import {useState, type ChangeEvent, type SubmitEvent} from 'react';
 import { useAuthStore } from '../../store/authStore';
+import { useNavigate } from 'react-router';
 
 const signupForm = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const navigate = useNavigate();
 
     const login = useAuthStore((state) => state.login);
 
@@ -42,6 +45,7 @@ const signupForm = () => {
               }
            
               login(data.token, data.user)
+              navigate('/');
         }
         catch(error){
           console.error(error);
