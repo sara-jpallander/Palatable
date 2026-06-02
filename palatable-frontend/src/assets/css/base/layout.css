@@ -5,15 +5,28 @@
 }
 
 .siteGrid {
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(8, 1fr);
-    column-gap: var(--gutter);
+    column-gap: var(--gutter); */
+    display: flex;
+
+    @media (max-width: 1290px) {
+        flex-direction: column;
+    }
 }
 
 .sitegrid-halfWidth--left {
-    grid-column: 1 / 5;
+    width: 50%;
+
+    @media (max-width: 1290px) {
+        width: 100%;
+    }
 }
 
 .sitegrid-halfWidth--right {
-    grid-column: 5 / 9;
+    width: 50%;
+
+    @media (max-width: 1290px) {
+        width: 100%;
+    }
 }

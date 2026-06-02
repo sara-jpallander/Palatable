@@ -1,0 +1,138 @@
+.CardPalette-slider .PaletteCard-container:last-child {
+    margin-right: var(--spacing-xl);
+
+    @media (max-width: 1290px) {
+        margin-right: 0;
+    }
+}
+
+.PaletteCard-container {
+    min-width: 40rem;
+    border-radius: 3rem;
+    overflow: hidden;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+    @media (max-width: 1290px) {
+        min-width: 35rem;
+        max-width: 47%;
+    }
+
+   /*  @media (max-width: 1250px) {
+        min-width: 42rem;
+    } */
+}
+
+.PaletteCard-container--top {
+    display: flex;
+}
+
+.PaletteCard-preview--text h3 {
+    font: var(--fs-heading-s);
+    color: #B80022;
+    background-color: #C5D4F8;
+    padding: var(--spacing-m);
+}
+
+.PaletteCard-preview--text > section {
+    font: var(--fs-heading-xs);
+    background-color: #F7F3F2;
+    padding: var(--spacing-m);
+}
+
+.PaletteCard-preview--text > section h4 {
+    color: #B80022;
+    font-weight: 300 !important;
+}
+
+.PaletteCard-preview--text > section p {
+    font: var(--fs-body-s);
+    color: #5D0000;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.PaletteCard-container--bottom {
+    background-color: white;
+    padding: var(--spacing-m);
+}
+
+.PaletteCard-title h2 {
+    font: var(--fs-heading-s);
+    margin-bottom: var(--spacing-4xs);
+}
+
+.PaletteCard-title > img {
+    width: 42px;
+    transition: var(--transition);
+
+    &:hover {
+        filter: saturate(2.5);
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+}
+/* 
+.PaletteCard-title > img.is-active {
+    filter:
+}
+ */
+.PaletteCard-container--bottom > p {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3xs);
+    font: var( --fs-label-s);
+}
+
+.PaletteCard-container--bottom > p > span {
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
+.PaletteCard-preview--color {
+    display: flex;
+    flex-direction: column;
+}
+
+.PaletteCard-preview--color > span {
+    height: 6.2rem;
+    width: calc(45rem * 0.35);
+}
+
+.PaletteCard-container--bottom > button {
+    width: 100%;
+    text-align: center;
+    font: var(--fs-label-m);
+    color: white;
+    background-color: var(--color-gray-strong);
+    margin-top: var(--spacing-l);
+    border-radius: var(--spacing-xxs);
+    padding: var(--spacing-xxs) 0;
+    transition: var(--transition);
+}
+
+.PaletteCard-container--bottom > button:hover {
+    background-color: var(--color-dark);
+}
+
+.color-1 {
+    background-color: #5D0000;
+}
+
+.color-2 {
+    background-color: #B80022;
+}
+
+.color-3 {
+    background-color: #C5D4F8;
+}
+
+.color-4 {
+    background-color: #F7F3F2;
+}

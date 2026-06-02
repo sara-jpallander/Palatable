@@ -1,15 +1,11 @@
 .SiteContainer h1 {
-    margin-left: -1rem;
-    margin-bottom: -2.8rem;
+    margin-left: -1.5rem;
+    /* margin-bottom: var(--spacing-4xs); */
 }
 
 .FrontPage-slogan {
     font: var(--fs-heading-m);
-}
-
-.FrontPage-intro {
-    margin-top: var(--spacing-3xl);
-}
+}/*  */
 
 .FrontPage-intro h2 {
     font: var(--fs-body-l);
@@ -18,17 +14,100 @@
 
 .FrontPage-intro p {
     margin-bottom: var(--spacing-xl);
+    max-width: 61rem;
 }
 
 .FrontPage-intro button {
-    padding: var(--spacing-xxs) var(--spacing-l);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4xs);
+
+    padding: 1rem 2rem 1.1rem 2.7rem;
     color: var(--color-light);
     background-color: var(--color-gray-strong);
     font: var(--fs-label-l);
-    border-radius: 3rem;
+    border-radius: 4rem;
     transition: var(--transition);
+}
+
+.FrontPage-intro button img {
+    width: 2.8rem;
+    margin-top: 0.4rem;
 }
 
 .FrontPage-intro button:hover {
     background-color: var(--color-dark);
+    gap: var(--spacing-3xs);
+}
+
+.slider-container {
+    position: relative;
+}
+
+@media (max-width: 1290px) {
+    .slider-container {
+        margin-top: calc(var(--spacing-3xl)*1.5);
+    }
+
+    .slider-container::before {
+        content: 'Browse our collection';
+        font: var(--fs-heading-m);
+        color: var(--color-dark);
+    }
+}
+
+.CardPalette-slider {
+    display: flex;
+    gap: var(--spacing-l);
+    width: 49vw;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    margin-right: calc(50% - 50vw);
+    margin-top: var(--spacing-xs);
+    padding-bottom: var(--spacing-xs);
+    padding-left: var(--spacing-m);
+    scrollbar-width: none;
+    user-select: none;
+    cursor: grab;
+
+    @media (max-width: 1290px) {
+        overflow: visible;
+        margin-right: 0;
+        padding-left: 0;
+        /* width: calc(95vw - var(--site-margin)); */
+        width: 100%;
+        margin-top: var(--spacing-xl);
+        /* flex-wrap: wrap; */
+    }
+
+    @media (max-width: 1250px) {
+        flex-wrap: wrap;
+        /* gap: var(--spacing-l) 0; */
+        justify-content: space-between;
+    }
+    
+}
+
+.CardPalette-slider.active {
+    cursor: grabbing;
+}
+
+.slider-container .overlay {
+    width: var(--spacing-l);
+    height: 100%;
+    position: absolute;
+    left: -0.2rem;
+    top: 0;
+    z-index: 999;
+        background-image: linear-gradient(
+        90deg,
+        var(--color-light),
+        rgba(248, 244, 244, 0.8),
+        rgba(248, 244, 244, 0.4),
+        rgba(255, 255, 255, 0)
+    );
+
+    @media (max-width: 1290px) {
+        display: none;
+    }
 }
