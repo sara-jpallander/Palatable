@@ -2,10 +2,15 @@ import '../assets/css/index.css'
 import heart from '../assets/images/heart.svg'
 import greenCheck from '../assets/images/green_check.svg'
 
-function PaletteCard() {
+interface PaletteCardProps {
+  theme: string;
+  rating: string;
+}
+
+function PaletteCard({ theme, rating }: PaletteCardProps) {
 
   return (
-    <div className='PaletteCard-container'>
+    <div className={`PaletteCard-container ${theme}`}>
       <div className="PaletteCard-container--top">
           <section className='PaletteCard-preview--text'>
             <h3>Lorem</h3>
@@ -24,10 +29,10 @@ function PaletteCard() {
       <div className="PaletteCard-container--bottom">
           <section className='PaletteCard-title flex-SpaceBetween'>
             {/* title */}
-            <h2>Portfolio</h2>
+            <h2>{theme}</h2>
             <img src={heart} alt="Like Button Heart" />
           </section>
-          <p><img src={greenCheck} alt="WCAG Grade Check" />WCAG AAA</p>
+          <p><img src={greenCheck} alt="WCAG Grade Check" />{rating}</p>
           <button>Download</button>
       </div>
     </div>

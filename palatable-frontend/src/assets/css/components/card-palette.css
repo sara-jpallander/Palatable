@@ -28,25 +28,25 @@
 
 .PaletteCard-preview--text h3 {
     font: var(--fs-heading-s);
-    color: #B80022;
-    background-color: #C5D4F8;
+    color: var(--cp-color-titles);
+    background-color: var(--cp-color-header);
     padding: var(--spacing-m);
 }
 
 .PaletteCard-preview--text > section {
     font: var(--fs-heading-xs);
-    background-color: #F7F3F2;
+    background-color: var(--cp-color-bg);
     padding: var(--spacing-m);
 }
 
 .PaletteCard-preview--text > section h4 {
-    color: #B80022;
+    color: var(--cp-color-titles);
     font-weight: 300 !important;
 }
 
 .PaletteCard-preview--text > section p {
     font: var(--fs-body-s);
-    color: #5D0000;
+    color: var(--cp-color-text);
 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -64,6 +64,7 @@
 .PaletteCard-title h2 {
     font: var(--fs-heading-s);
     margin-bottom: var(--spacing-4xs);
+    text-transform: capitalize;
 }
 
 .PaletteCard-title > img {
@@ -101,7 +102,7 @@
 }
 
 .PaletteCard-preview--color > span {
-    height: 6.2rem;
+    height: 6.15rem;
     width: calc(45rem * 0.35);
 }
 
@@ -122,17 +123,32 @@
 }
 
 .color-1 {
-    background-color: #5D0000;
+    background-color: var(--cp-color-text);
 }
 
 .color-2 {
-    background-color: #B80022;
+    background-color: var(--cp-color-titles);
 }
 
 .color-3 {
-    background-color: #C5D4F8;
+    background-color: var(--cp-color-header);
 }
 
 .color-4 {
-    background-color: #F7F3F2;
+    background-color: var(--cp-color-bg);
+}
+
+/* Themes */
+.PaletteCard-container.portfolio {
+    --cp-color-titles: #B80022;
+    --cp-color-header: #C5D4F8;
+    --cp-color-text: #5D0000;
+    --cp-color-bg: #F7F3F2;
+}
+
+.PaletteCard-container.scape {
+    --cp-color-titles: #ff56a2;
+    --cp-color-header: #1c0046;
+    --cp-color-text: #f9edeb;
+    --cp-color-bg:#311862;
 }
