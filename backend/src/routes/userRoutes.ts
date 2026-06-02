@@ -50,7 +50,17 @@ async function createUser(req: Request, res: Response) {
       // Skapa användare
       const user = await User.create(req.body);
 
-      res.status(201).json({ message: "Använderen skapad", data: user });
+      // Skickar tillbaka rätt status kod samt skapar en token direkt när man registrerar så att man kan bli inloggad direkt efter skapat konto.
+      const token = createJWT(user); 
+      res.status(201).json({ 
+        message: "Användaren skapad", 
+        token: token, 
+        user: {
+          id: user._id.toString(),
+          name: user.name,
+          email: user.email
+        } 
+      });
     } catch (error) {
     	res.status(500).json({ message: `Internal server error. Misslyckades att skapa användare. ${error}` });
     };
