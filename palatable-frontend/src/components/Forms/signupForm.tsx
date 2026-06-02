@@ -24,7 +24,7 @@ const signupForm = () => {
         e.preventDefault();
 
         try {
-            const res = await fetch('http://localhost:3001/users/signup', {
+            const res = await fetch('http://localhost:3008/users/register', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ const signupForm = () => {
             <label htmlFor="password">Skriv in ditt Lösenord här:</label>
             <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange}/>
             
-            <button type="submit">Logga in</button>
+            <button type="submit">Registrera</button>
         </form>
     </main>
         </>
