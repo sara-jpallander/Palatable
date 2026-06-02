@@ -71,9 +71,9 @@ const mainPage = () => {
         <div className='slider-container'>
           <span className='overlay'></span>
           <div className='CardPalette-slider sitegrid-halfWidth--right'>
-            <PaletteCard />
-            <PaletteCard />
-            <PaletteCard />
+            <PaletteCard palette="fire" files={["variables.css", "typography.css"]} />
+            <PaletteCard palette="forrest" files={["test1.css", "test2.css"]} />
+            <PaletteCard palette="ocean" files={["ocean1.css", "ocean2.css"]} />
           </div>
         </div>
         
