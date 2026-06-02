@@ -5,50 +5,55 @@ import { useEffect } from "react";
 
 const mainPage = () => {
     useEffect(() => {
-  const slider = document.querySelector('.CardPalette-slider') as HTMLElement | null;
-  if (!slider) return;
+      const slider = document.querySelector('.CardPalette-slider') as HTMLElement | null;
+      if (!slider) return;
 
-  let isDown = false;
-  let startX = 0;
-  let scrollLeft = 0;
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
 
-  const mouseDownHandler = (e: MouseEvent) => {
-    isDown = true;
-    slider.classList.add('active');
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-  };
+      const mouseDownHandler = (e: MouseEvent) => {
+        isDown = true;
+        slider.classList.add('active');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+      };
 
-  const mouseLeaveHandler = () => {
-    isDown = false;
-    slider.classList.remove('active');
-  };
+      const mouseLeaveHandler = () => {
+        isDown = false;
+        slider.classList.remove('active');
+      };
 
-  const mouseUpHandler = () => {
-    isDown = false;
-    slider.classList.remove('active');
-  };
+      const mouseUpHandler = () => {
+        isDown = false;
+        slider.classList.remove('active');
+      };
 
-  const mouseMoveHandler = (e: MouseEvent) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 2;
-    slider.scrollLeft = scrollLeft - walk;
-  };
+      const mouseMoveHandler = (e: MouseEvent) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2;
+        slider.scrollLeft = scrollLeft - walk;
+      };
 
-  slider.addEventListener('mousedown', mouseDownHandler);
-  slider.addEventListener('mouseleave', mouseLeaveHandler);
-  slider.addEventListener('mouseup', mouseUpHandler);
-  slider.addEventListener('mousemove', mouseMoveHandler);
+      slider.addEventListener('mousedown', mouseDownHandler);
+      slider.addEventListener('mouseleave', mouseLeaveHandler);
+      slider.addEventListener('mouseup', mouseUpHandler);
+      slider.addEventListener('mousemove', mouseMoveHandler);
 
-  return () => {
-    slider.removeEventListener('mousedown', mouseDownHandler);
-    slider.removeEventListener('mouseleave', mouseLeaveHandler);
-    slider.removeEventListener('mouseup', mouseUpHandler);
-    slider.removeEventListener('mousemove', mouseMoveHandler);
-  };
-}, []);
+      return () => {
+        slider.removeEventListener('mousedown', mouseDownHandler);
+        slider.removeEventListener('mouseleave', mouseLeaveHandler);
+        slider.removeEventListener('mouseup', mouseUpHandler);
+        slider.removeEventListener('mousemove', mouseMoveHandler);
+      };
+    }, []);
+
+    const themes = [
+      { theme: 'portfolio', rating: 'WCAG AAA' },
+      { theme: 'scape', rating: 'WCAG AA' }
+    ];
 
   return (
     <>
@@ -71,9 +76,9 @@ const mainPage = () => {
         <div className='slider-container'>
           <span className='overlay'></span>
           <div className='CardPalette-slider sitegrid-halfWidth--right'>
-            <PaletteCard />
-            <PaletteCard />
-            <PaletteCard />
+            {themes.map((item) => (
+              <PaletteCard key={item.theme} theme={item.theme} rating={item.rating}/>
+            ))}
           </div>
         </div>
         
