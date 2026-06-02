@@ -1,13 +1,16 @@
 import '../assets/css/index.css'
 import heart from '../assets/images/heart.svg'
 import greenCheck from '../assets/images/green_check.svg'
+import DownloadButtons from './ButtonsForCards/downLoadButtons'
 
 interface PaletteCardProps {
   theme: string;
   rating: string;
+  palette: string;
+  files: string[];
 }
 
-function PaletteCard({ theme, rating }: PaletteCardProps) {
+function PaletteCard({ theme, rating, palette, files }: PaletteCardProps) {
 
   return (
     <div className={`PaletteCard-container ${theme}`}>
@@ -33,7 +36,7 @@ function PaletteCard({ theme, rating }: PaletteCardProps) {
             <img src={heart} alt="Like Button Heart" />
           </section>
           <p><img src={greenCheck} alt="WCAG Grade Check" />{rating}</p>
-          <button>Download</button>
+          <DownloadButtons palette={palette} files={files}/>
       </div>
     </div>
   )
