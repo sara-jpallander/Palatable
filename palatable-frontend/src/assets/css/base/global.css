@@ -31,7 +31,7 @@ p {
     max-width: 1440px;
     margin: 0 var(--site-margin);
     justify-self: center;
-    width: calc(100% - var(--site-margin));
+    width: calc(95vw - var(--spacing-3xl));
 }
 
 .SiteContainer {

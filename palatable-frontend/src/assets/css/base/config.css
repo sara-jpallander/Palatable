@@ -49,11 +49,11 @@
 
 
     /* TODO: mobile variables */
-    @media (max-width: 1024px) {
+    @media (max-width: 769px) {
         --spacing-3xl: 4rem;
     }
 
-    @media (max-width: 769px) {
-        --spacing-3xl: 2rem;
-    }
+    /* @media (max-width: 1024px) {
+        
+    } */
 }
