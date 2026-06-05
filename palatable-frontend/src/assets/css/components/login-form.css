@@ -1,0 +1,55 @@
+.LoginForm-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.LoginForm-container-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.LoginForm-container-form label {
+    display: block;
+    align-self: flex-start;
+    text-align: left;
+    font: var(--fs-label-m);
+    color: var(--color-dark);
+}
+
+.LoginForm-container-form input,
+.LoginForm-container-form button {
+    box-sizing: border-box;
+    width: 30vw;
+    height: 5vh;
+    padding: 2%;
+    border: solid black 2px;
+    border-radius: 5px;
+    font: var(--fs-body-s);
+    color: var(--color-dark);
+}
+
+.LoginForm-container-form input.LoginForm-input--error,
+.LoginForm-container-form input.LoginForm-input--error:focus {
+    border: solid #C62828 2px;
+    outline: none;
+}
+
+.LoginForm-error {
+    width: 30vw;
+    margin: 0;
+    font: var(--fs-body-s);
+    color: #C62828;
+    text-align: left;
+}
+
+.LoginForm-container-form button {
+    text-align: center;
+    background-color: var(--color-yellow);
+    font: var(--fs-label-s);
+}
