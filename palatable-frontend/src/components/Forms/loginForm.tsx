@@ -46,7 +46,7 @@ const loginForm = () => {
               const data = await res.json();
 
               if (!res.ok) {
-                const message = data.message || data.error || 'Login misslyckad';
+                const message = data.message || data.error || 'Login failed';
                 setErrorMessage(message);
                 setErrorField(res.status === 404 ? 'email' : res.status === 400 ? 'password' : null);
                 return;
@@ -56,7 +56,7 @@ const loginForm = () => {
               navigate('/');
         }
         catch {
-            setErrorMessage('Login misslyckad');
+            setErrorMessage('Login failed');
             setErrorField(null);
           }
     }
@@ -69,16 +69,16 @@ const loginForm = () => {
          <div className="LoginForm-container">
         <form className="LoginForm-container-form" onSubmit={handleLogin}>
             <label htmlFor="email">Email</label>
-            <input className={getInputClassName('email')} type="text" id="email" name="email" value={email} onChange={handleEmailChange} placeholder="Skriv din email här..."/>
+            <input className={getInputClassName('email')} type="text" id="email" name="email" value={email} onChange={handleEmailChange} placeholder="Enter your email..."/>
 
-            <label htmlFor="password">Lösenord</label>
-            <input className={getInputClassName('password')} type="password" autoComplete="off" id="password" name="password" value={password} onChange={handlePasswordChange} placeholder="Skriv ditt lösenord här..."/>
+            <label htmlFor="password">Password</label>
+            <input className={getInputClassName('password')} type="password" autoComplete="off" id="password" name="password" value={password} onChange={handlePasswordChange} placeholder="Enter your password..."/>
 
             {errorMessage && (
               <p className="LoginForm-error" role="alert">{errorMessage}</p>
             )}
             
-            <button type="submit">Logga in</button>
+            <button type="submit">Log in</button>
         </form>
         </div>
         </>

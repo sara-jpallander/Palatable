@@ -33,8 +33,8 @@ function HeaderSection() {
             {user ? 
             (
               <>
-              <h2>Hej {user.name}!</h2>
-              <button onClick={handleLogout}>Logga ut</button>
+              <h2>Hi {user.name}!</h2>
+              <button onClick={handleLogout}>Log out</button>
               </>
             ): 
             <>

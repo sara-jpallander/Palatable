@@ -49,6 +49,7 @@
 }
 
 .LoginForm-container-form button {
+    border: none;
     text-align: center;
     background-color: var(--color-yellow);
     font: var(--fs-label-s);
