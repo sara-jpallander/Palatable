@@ -4,16 +4,16 @@ const userValidation = z.object({
     name: z
         .string()
         .trim()
-        .min(1, "Namn kan inte vara tomt")
-        .max(20, "Namn kan inte ha mer än 20 bokstäver" ),
+        .min(1, "Name cannot be empty")
+        .max(20, "Name cannot exceed 20 characters"),
 
     email: z
-        .email(),
+        .email("Invalid email"),
     
     password: z
         .string()
         .trim()
-        .min(8, "Lösenord måste ha minst 8 tecken")
+        .min(8, "Password must be at least 8 characters")
 });
 
 export default userValidation;
