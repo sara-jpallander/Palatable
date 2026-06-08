@@ -51,8 +51,8 @@ const mainPage = () => {
     }, []);
 
     const themes = [
-      { theme: 'portfolio', rating: 'WCAG AAA' },
-      { theme: 'scape', rating: 'WCAG AA' }
+      { theme: 'portfolio', rating: 'WCAG AAA', palette: 'fire', files: ['variables.css', 'typography.css'] },
+      { theme: 'scape', rating: 'WCAG AA', palette: 'forrest', files: ['test1.css', 'test2.css'] }
     ];
 
   return (
@@ -77,7 +77,7 @@ const mainPage = () => {
           <span className='overlay'></span>
           <div className='CardPalette-slider sitegrid-halfWidth--right'>
             {themes.map((item) => (
-              <PaletteCard key={item.theme} theme={item.theme} rating={item.rating}/>
+              <PaletteCard key={item.theme} theme={item.theme} rating={item.rating} palette={item.palette} files={item.files} />
             ))}
           </div>
         </div>

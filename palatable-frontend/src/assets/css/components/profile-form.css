@@ -1,0 +1,48 @@
+.ProfileForm-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.ProfileForm-container-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.ProfileForm-container-form label {
+    display: block;
+    align-self: flex-start;
+    text-align: left;
+    font: var(--fs-label-m);
+    color: var(--color-dark);
+}
+
+.ProfileForm-container-form input,
+.ProfileForm-container-form button {
+    box-sizing: border-box;
+    width: 30vw;
+    height: 5vh;
+    padding: 2%;
+    border: solid black 2px;
+    border-radius: 5px;
+    font: var(--fs-body-s);
+    color: var(--color-dark);
+}
+
+.ProfileForm-container-form button {
+    border: none;
+    text-align: center;
+    background-color: var(--color-gray-strong);
+    color: var(--color-light);
+    font: var(--fs-label-s);
+    transition: var(--transition);
+}
+
+.ProfileForm-container-form button:hover {
+    background-color: var(--color-dark);
+}
