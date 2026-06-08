@@ -1,6 +1,8 @@
 import {useState, type ChangeEvent, type SubmitEvent} from 'react'
 import { useAuthStore } from "../store/authStore";
 import '../assets/css/index.css';
+import { favoriteStore } from '../store/favoriteStore';
+import PaletteCard from '../components/card-palette';
 
 const profilePage = () => {
     const user = useAuthStore((state) => state.user);
@@ -9,6 +11,7 @@ const profilePage = () => {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState('');
+  const favorites = favoriteStore((state) => state.favorites);
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -83,6 +86,24 @@ const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
             
             <button type="submit">Save</button>
         </form>
+        </div>
+        <div className="Favorites-section">
+          <h2>Mina Favoriter</h2>
+          <div className="CardPalette-slider">
+            {favorites.length > 0 ? (
+              favorites.map((item) => (
+                <PaletteCard 
+                  key={item.theme} 
+                  theme={item.theme} 
+                  rating={item.rating} 
+                  palette={item.palette} 
+                  files={item.files} 
+                />
+              ))
+            ) : (
+              <p>Du har inga sparade favoriter än.</p>
+            )}
+          </div>
         </div>
       </>
       ) : 
