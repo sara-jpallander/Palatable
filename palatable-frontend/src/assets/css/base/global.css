@@ -31,9 +31,13 @@ p {
     max-width: 1440px;
     margin: 0 var(--site-margin);
     justify-self: center;
-    width: calc(95vw - var(--spacing-3xl));
+    width: calc(95vw - var(--site-margin));
 }
 
 .SiteContainer {
     margin-top: var(--spacing-3xl);
+
+    @media (max-width: 769px) {
+        margin-top: var(--spacing-xxl);
+    }
 }

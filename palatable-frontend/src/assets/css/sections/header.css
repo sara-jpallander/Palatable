@@ -4,10 +4,20 @@ header {
 
 .HeaderContainer {
     height: 14rem;
+
+    @media (max-width: 769px) {
+        height: 10rem;
+    }
 }
 
 .HeaderContainer-logo {
     width: 31.4rem;
+
+    @media (max-width: 769px) {
+        width: 22rem;
+        min-width: 14rem;
+        padding-right: var(--spacing-3xl);
+    }
 }
 
 .HeaderProfileMenu {
@@ -55,6 +65,10 @@ header {
     mix-blend-mode: multiply;
     color: var(--color-dark);
     transition: var(--transition);
+
+    /* @media (max-width: 769px) {
+        font: var(--fs-body-s);
+    } */
 }
 
 .HeaderContainer-buttons button:hover {
@@ -83,6 +97,13 @@ header {
     background-color: var(--color-yellow);
     padding: var(--spacing-4xs) var(--spacing-l);
     border-radius: 3rem;
+
+/*     @media (max-width: 769px) {
+        display: block;
+        padding: var(--spacing-4xs) 0;
+        width: 9rem;
+        text-align: center;
+    } */
     
 }
 
@@ -92,4 +113,56 @@ header {
     border-radius: 0 0 0 4rem;
     corner-shape: bevel;
     margin-left: -4.5rem;
+
+    @media (max-width: 769px) {
+        margin-left: -4.3rem;
+    }
+
+/*     @media (max-width: 769px) {
+        display: block;
+        border-radius: 0;
+        padding: var(--spacing-4xs) 0;
+        width: 9rem;
+        text-align: center;
+        margin-top: 0.5rem;
+        margin-left: 0;
+        border-radius: 3rem;
+        corner-shape:initial;
+    } */
 }
+
+.MenuBtn {
+    width: 2.6rem;
+    min-width: 1.6rem;
+}
+
+.MobileMenu {
+    height: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-light);
+    z-index: 99;
+    width: 100vw;
+    border-top: var(--border);
+
+    transition: height 0.3s ease-out;
+}
+
+/* .MobileMenu > button {
+    opacity: 0;
+
+    transition: opacity 0.3s ease-in;
+}
+ */
+.MobileMenu.is-active {
+    height: 200px;
+}
+
+/* .MobileMenu.is-active > button {
+    opacity: 1;
+} */

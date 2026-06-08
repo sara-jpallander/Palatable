@@ -1,11 +1,19 @@
 import '../assets/css/index.css'
 import logo from '../assets/images/logo.svg'
+import hamburger from '../assets/images/hamburger.svg'
+import close from '../assets/images/close.svg'
+import { useState } from "react";
 import profile from '../assets/images/profile.svg'
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useAuthStore } from '../store/authStore';
 
 function HeaderSection() {
+  const [isMenuOpen, setIsMoneuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMoneuOpen(!isMenuOpen);
+  }
 
   const user = useAuthStore((state) => state.user);
   const logout = useAuthStore((state) => state.logout);
@@ -52,6 +60,25 @@ function HeaderSection() {
   return (
     <header>
       <div className="HeaderContainer flex-SpaceBetween">
+          <img src={logo} className="HeaderContainer-logo"/>
+          <div className="HeaderContainer-buttons u-hiddenMobile">
+            <button className="HeaderButton--login">Login</button>
+            <button className="HeaderButton--register">Register</button>
+          </div>
+          <img src={isMenuOpen ? close : hamburger} 
+               alt="Hamburger Menu" 
+               className='u-hiddenDesktop MenuBtn' 
+               onClick={toggleMenu}
+               />
+          <div 
+          className={
+            `HeaderContainer-buttons 
+            MobileMenu 
+            u-hiddenDesktop 
+            ${isMenuOpen && 'is-active'}`
+          }>
+            <button className="HeaderButton--login">Login</button>
+            <button className="HeaderButton--register">Register</button>
           <img onClick={navigateToHome} src={logo} className="HeaderContainer-logo"/>
           <div className="HeaderContainer-buttons">
             {user ? 
