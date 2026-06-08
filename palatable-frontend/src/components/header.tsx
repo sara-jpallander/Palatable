@@ -2,7 +2,6 @@ import '../assets/css/index.css'
 import logo from '../assets/images/logo.svg'
 import hamburger from '../assets/images/hamburger.svg'
 import close from '../assets/images/close.svg'
-import { useState } from "react";
 import profile from '../assets/images/profile.svg'
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
@@ -60,25 +59,6 @@ function HeaderSection() {
   return (
     <header>
       <div className="HeaderContainer flex-SpaceBetween">
-          <img src={logo} className="HeaderContainer-logo"/>
-          <div className="HeaderContainer-buttons u-hiddenMobile">
-            <button className="HeaderButton--login">Login</button>
-            <button className="HeaderButton--register">Register</button>
-          </div>
-          <img src={isMenuOpen ? close : hamburger} 
-               alt="Hamburger Menu" 
-               className='u-hiddenDesktop MenuBtn' 
-               onClick={toggleMenu}
-               />
-          <div 
-          className={
-            `HeaderContainer-buttons 
-            MobileMenu 
-            u-hiddenDesktop 
-            ${isMenuOpen && 'is-active'}`
-          }>
-            <button className="HeaderButton--login">Login</button>
-            <button className="HeaderButton--register">Register</button>
           <img onClick={navigateToHome} src={logo} className="HeaderContainer-logo"/>
           <div className="HeaderContainer-buttons">
             {user ? 
@@ -104,15 +84,35 @@ function HeaderSection() {
                   </div>
                 )}
               </div>
-            ): 
+            ):
             <>
+            <div className="HeaderContainer-buttons u-hiddenMobile">
+              <button onClick={navigateToLogin} className="HeaderButton--login">Login</button>
+              <button onClick={navigateToSignup} className="HeaderButton--register">Register</button>
+            </div> 
+            
+            <div 
+              className={
+                `HeaderContainer-buttons 
+                MobileMenu 
+                u-hiddenDesktop 
+                ${isMenuOpen && 'is-active'}`
+              }>
             <button onClick={navigateToLogin} className="HeaderButton--login">Login</button>
             <button onClick={navigateToSignup} className="HeaderButton--register">Register</button>
+            </div>
             </>
             }
           </div>
+          <img src={isMenuOpen ? close : hamburger} 
+               alt="Hamburger Menu" 
+               className='u-hiddenDesktop MenuBtn' 
+               onClick={toggleMenu}
+          />
+          
       </div>
     </header>
+  
   )
 }
 

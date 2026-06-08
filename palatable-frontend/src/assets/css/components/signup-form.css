@@ -3,36 +3,55 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .SignupForm-container-form{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 1rem;
+    gap: var(--spacing-4xs);
+    background-color: white;
+    padding: var(--spacing-xl) var(--spacing-xxl);
+    border-radius: var(--spacing-3xs);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    margin-top: var(--spacing-3xl);
+    width: 45rem;
+    
+    @media (max-width: 760px) {
+        width: 70%;
+        padding: var(--spacing-l) var(--spacing-xl);
+    }
 }
 
 .SignupForm-container-form label {
-    display: block;
-    align-self: flex-start;
-    text-align: left;
     font: var(--fs-label-m);
     color: var(--color-dark);
 }
 
-.SignupForm-container-form input,
-.SignupForm-container-form button {
+.SignupForm-container-form input {
     box-sizing: border-box;
-    width: 30vw;
-    height: 5vh;
-    padding: 2%;
-    border: solid black 2px;
+    padding: var(--spacing-3xs);
+    border: solid var(--color-gray-soft) 2px;
     border-radius: 5px;
     font: var(--fs-body-s);
     color: var(--color-dark);
+    margin-bottom: var(--spacing-m);
+
+    &:active {
+        border: solid gray 2px;
+    }
+
+    &:focus {
+        border: solid gray 2px;
+    }
+
+    &:focus-visible {
+        border: solid gray 2px !important;
+    }
 }
+
+/* .SignupForm-container-form input:last-of-type {
+    margin-bottom: var(--spacing-4xs);
+} */
 
 .SignupForm-container-form input.SignupForm-input--error,
 .SignupForm-container-form input.SignupForm-input--error:focus {
@@ -41,20 +60,25 @@
 }
 
 .SignupForm-error {
-    width: 30vw;
-    margin: 0;
     font: var(--fs-body-s);
-    color: #C62828;
-    text-align: left;
+    color: #9f0a0a;
+    background-color: #efd3d3;
+    padding: var(--spacing-3xs);
+    border-radius: 0.4rem;
+    border-left: solid #de3636 3px;
 }
 
 .SignupForm-container-form button {
     border: none;
     text-align: center;
+    padding: var(--spacing-3xs) 0;
+    border-radius: var(--spacing-3xs);
+    
     background-color: var(--color-gray-strong);
     color: var(--color-light);
-    font: var(--fs-label-s);
+    font: var(--fs-label-l);
     transition: var(--transition);
+    margin-top: var(--spacing-3xs);
 }
 
 .SignupForm-container-form button:hover {
