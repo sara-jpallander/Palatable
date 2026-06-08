@@ -2,6 +2,7 @@ import '../assets/css/index.css'
 import heart from '../assets/images/heart.svg'
 import greenCheck from '../assets/images/green_check.svg'
 import DownloadButtons from './ButtonsForCards/downLoadButtons'
+import { favoriteStore } from '../store/favoriteStore'
 
 interface PaletteCardProps {
   theme: string;
@@ -11,6 +12,13 @@ interface PaletteCardProps {
 }
 
 function PaletteCard({ theme, rating, palette, files }: PaletteCardProps) {
+
+  const toggleFavorite = favoriteStore((state) => state.toggleFavorites);
+  const isFavorite = favoriteStore((state) => state.isFavorite(theme));
+
+  const handleLike = () => {
+    toggleFavorite({theme, rating, palette, files})
+  }
 
   return (
     <div className={`PaletteCard-container ${theme}`}>
@@ -33,7 +41,12 @@ function PaletteCard({ theme, rating, palette, files }: PaletteCardProps) {
           <section className='PaletteCard-title flex-SpaceBetween'>
             {/* title */}
             <h2>{theme}</h2>
-            <img src={heart} alt="Like Button Heart" />
+            <img src={heart} onClick={handleLike}
+             style={{ 
+            cursor: 'pointer',
+            filter: isFavorite ? 'invert(20%) sepia(100%) saturate(500%) hue-rotate(350deg)' : 'none' 
+            }}  
+            alt="Like Button Heart" />
           </section>
           <p><img src={greenCheck} alt="WCAG Grade Check" />{rating}</p>
           <DownloadButtons palette={palette} files={files}/>
