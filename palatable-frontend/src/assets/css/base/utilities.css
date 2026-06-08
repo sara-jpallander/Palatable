@@ -1,0 +1,15 @@
+.u-hiddenMobile {
+    display: initial;
+
+    @media (max-width: 769px) {
+        display: none;
+    }
+}
+
+.u-hiddenDesktop {
+    display: none;
+
+    @media (max-width: 769px) {
+        display: initial;
+    }
+}

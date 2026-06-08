@@ -27,7 +27,7 @@
 
     /* Labels - buttons, menu, links, ui etc */
     --fs-label-l: normal normal 400 normal 2rem 'Outfit';
-    --fs-label-m: normal normal 500 normal 1.8rem 'Outfit';
+    --fs-label-m: normal normal 400 normal 1.8rem 'Outfit';
     --fs-label-s: normal normal 400 normal 1.6rem 'Outfit';
 
     /* SPACING - OBS ej klar? */
@@ -42,7 +42,7 @@
     --spacing-xxl: 6.4rem;
     --spacing-3xl: 8rem;
 
-    --site-margin: var(--spacing-3xl);
+    --site-margin: 8rem;
     --gutter: 4rem;
 
     --border: 1px solid var(--color-gray-soft);
@@ -50,10 +50,52 @@
 
     /* TODO: mobile variables */
     @media (max-width: 769px) {
-        --spacing-3xl: 4rem;
+        /* Heading */
+        --fs-heading-l: 
+            normal 
+            normal 
+            300 
+            normal 
+            clamp(6.2rem, 10vw, 10.8rem)
+            'Cal Sans';
+
+        --fs-heading-m: 
+            normal 
+            normal 
+            300 
+            normal 
+            clamp(3.8rem, 8vw, 4.8rem) 
+            'Cal Sans';
+
+        --fs-heading-s: normal normal 300 normal 3.6rem 'Cal Sans';
+        --fs-heading-xs: normal normal 300 normal 1.8rem 'Cal Sans';
+
+        /* Body text */
+        --fs-body-l: normal normal 300 normal 3.2rem 'Outfit';
+        --fs-body-m: normal normal 300 normal 1.8rem 'Outfit'; /* Default body text */
+        --fs-body-s: normal normal 300 normal 1.5rem 'Outfit';
+
+        /* Labels - buttons, menu, links, ui etc */
+        --fs-label-l: normal normal 400 normal 1.8rem 'Outfit';
+        --fs-label-m: normal normal 400 normal 1.8rem 'Outfit';
+        --fs-label-s: normal normal 400 normal 1.6rem 'Outfit';
+
+        /* SPACING - OBS ej klar? */
+        --spacing-4xs: 0.4rem;
+        --spacing-3xs: 0.8rem;
+        --spacing-xxs: 1.2rem;
+        --spacing-xs: 1.6rem;
+        --spacing-s: 1.8rem;
+        --spacing-m: 2.2rem;
+        --spacing-l: 2.8rem;
+        --spacing-xl: 4.2rem;
+        --spacing-xxl: 5.8rem;
+        --spacing-3xl: 7.6rem;
+
+        --site-margin: 4rem;
     }
 
-    /* @media (max-width: 1024px) {
-        
-    } */
+    @media (max-width: 630px) {
+        --fs-heading-s: normal normal 300 normal 3.2rem 'Cal Sans';
+    }
 }

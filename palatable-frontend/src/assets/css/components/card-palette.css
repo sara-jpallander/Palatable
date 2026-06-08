@@ -1,8 +1,12 @@
 .CardPalette-slider .PaletteCard-container:last-child {
     margin-right: var(--spacing-xl);
 
-    @media (max-width: 1290px) {
+    @media ((max-width: 1290px) and (min-width: 855px)) {
         margin-right: 0;
+    }
+
+    @media (max-width: 854px) {
+        margin-right: 7rem;
     }
 }
 
@@ -17,9 +21,9 @@
         max-width: 47%;
     }
 
-   /*  @media (max-width: 1250px) {
-        min-width: 42rem;
-    } */
+    @media (max-width: 769px) {
+        min-width: 31rem;
+    }
 }
 
 .PaletteCard-container--top {
@@ -78,6 +82,14 @@
     &:active {
         transform: scale(0.9);
     }
+
+    @media (max-width: 769px) {
+        width: 3.8rem;
+    }
+
+    @media (max-width: 630px) {
+        width: 3.4rem;
+    }
 }
 /* 
 .PaletteCard-title > img.is-active {
@@ -99,14 +111,23 @@
 .PaletteCard-preview--color {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .PaletteCard-preview--color > span {
-    height: 6.15rem;
+    height: 25%;
     width: calc(45rem * 0.35);
+
+    @media (max-width: 769px) {
+        width: calc(45rem * 0.29);
+    }
 }
 
 .PaletteCard-container--bottom > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-3xs);
     width: 100%;
     text-align: center;
     font: var(--fs-label-m);
@@ -120,6 +141,10 @@
 
 .PaletteCard-container--bottom > button:hover {
     background-color: var(--color-dark);
+}
+
+.PaletteCard-container--bottom > button > img {
+    width: var(--spacing-m);
 }
 
 .color-1 {

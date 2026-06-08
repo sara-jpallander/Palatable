@@ -1,11 +1,16 @@
 .SiteContainer h1 {
     margin-left: -1.5rem;
     /* margin-bottom: var(--spacing-4xs); */
+
+    @media (max-width: 769px) {
+        margin-left: -0.8rem;
+    }
 }
 
 .FrontPage-slogan {
     font: var(--fs-heading-m);
-}/*  */
+    max-width: 100vw !important;
+}
 
 .FrontPage-intro h2 {
     font: var(--fs-body-l);
@@ -28,6 +33,10 @@
     font: var(--fs-label-l);
     border-radius: 4rem;
     transition: var(--transition);
+
+    @media (max-width: 769px) {
+        padding: 0.8rem 1.8rem 0.9rem 2.5rem; 
+    }
 }
 
 .FrontPage-intro button img {
@@ -42,12 +51,17 @@
 
 .slider-container {
     position: relative;
+
+    @media (max-width: 1290px) {
+        margin-top: calc(var(--spacing-3xl)*1.5);
+    }
+
+    @media (max-width: 769px) {
+        margin-top: calc(var(--spacing-3xl)*1.2);
+    }
 }
 
 @media (max-width: 1290px) {
-    .slider-container {
-        margin-top: calc(var(--spacing-3xl)*1.5);
-    }
 
     .slider-container::before {
         content: 'Browse our collection';
@@ -70,22 +84,22 @@
     user-select: none;
     cursor: grab;
 
-    @media (max-width: 1290px) {
+    @media ((max-width: 1290px) and (min-width: 855px)) {
         overflow: visible;
         margin-right: 0;
         padding-left: 0;
         /* width: calc(95vw - var(--site-margin)); */
         width: 100%;
         margin-top: var(--spacing-xl);
-        /* flex-wrap: wrap; */
-    }
-
-    @media (max-width: 1250px) {
         flex-wrap: wrap;
-        /* gap: var(--spacing-l) 0; */
         justify-content: space-between;
     }
     
+    @media (max-width: 854px) {
+        margin-left: calc(50% - 50vw);
+        width: 100vw;
+        padding-left: 3.2rem;
+    }
 }
 
 .CardPalette-slider.active {

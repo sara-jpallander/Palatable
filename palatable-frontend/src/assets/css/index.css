@@ -5,6 +5,7 @@
 @import 'base/global.css';
 @import 'base/reset.css';
 @import 'base/layout.css';
+@import 'base/utilities.css';
 
 /* Components */
 @import 'components/card-palette.css';

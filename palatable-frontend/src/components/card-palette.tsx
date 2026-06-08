@@ -1,6 +1,7 @@
 import '../assets/css/index.css'
 import heart from '../assets/images/heart.svg'
 import greenCheck from '../assets/images/green_check.svg'
+import download from '../assets/images/download.svg'
 
 interface PaletteCardProps {
   theme: string;
@@ -33,7 +34,10 @@ function PaletteCard({ theme, rating }: PaletteCardProps) {
             <img src={heart} alt="Like Button Heart" />
           </section>
           <p><img src={greenCheck} alt="WCAG Grade Check" />{rating}</p>
-          <button>Download</button>
+          <button>
+            Download
+            <img src={download} alt="" />
+          </button>
       </div>
     </div>
   )
