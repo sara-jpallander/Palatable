@@ -1,7 +1,7 @@
 import {useState, type ChangeEvent, type SubmitEvent} from 'react';
 import { useAuthStore } from '../../store/authStore';
 import { useNavigate } from 'react-router';
-import '../../assets/css/components/login-form.css';
+import '../../assets/css/index.css';
 
 const loginForm = () => {
     const [email, setEmail] = useState('');

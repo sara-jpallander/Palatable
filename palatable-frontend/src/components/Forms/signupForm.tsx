@@ -1,7 +1,7 @@
 import {useState, type ChangeEvent, type SubmitEvent} from 'react';
 import { useAuthStore } from '../../store/authStore';
 import { useNavigate } from 'react-router';
-import '../../assets/css/components/signup-form.css';
+import '../../assets/css/index.css';
 
 type SignupField = 'name' | 'email' | 'password';
 

@@ -1,5 +1,7 @@
 import '../assets/css/index.css'
 import logo from '../assets/images/logo.svg'
+import profile from '../assets/images/profile.svg'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useAuthStore } from '../store/authStore';
 
@@ -7,12 +9,23 @@ function HeaderSection() {
 
   const user = useAuthStore((state) => state.user);
   const logout = useAuthStore((state) => state.logout);
-
-  const handleLogout = () => {
-    logout();
-  }
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const profileMenuRef = useRef<HTMLDivElement>(null);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isProfileMenuOpen) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (profileMenuRef.current && !profileMenuRef.current.contains(event.target as Node)) {
+        setIsProfileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isProfileMenuOpen]);
 
   const navigateToHome = () => {
     navigate('/')
@@ -25,6 +38,17 @@ function HeaderSection() {
     navigate('/signup')
   }
 
+  const navigateToProfile = () => {
+    setIsProfileMenuOpen(false);
+    navigate('/profile')
+  }
+
+  const handleLogout = () => {
+    setIsProfileMenuOpen(false);
+    logout();
+    navigate('/');
+  }
+
   return (
     <header>
       <div className="HeaderContainer flex-SpaceBetween">
@@ -32,10 +56,27 @@ function HeaderSection() {
           <div className="HeaderContainer-buttons">
             {user ? 
             (
-              <>
-              <h2>Hi {user.name}!</h2>
-              <button onClick={handleLogout}>Log out</button>
-              </>
+              <div className="HeaderProfileMenu" ref={profileMenuRef}>
+                <button
+                  type="button"
+                  className="HeaderProfileMenu-trigger"
+                  onClick={() => setIsProfileMenuOpen((open) => !open)}
+                  aria-expanded={isProfileMenuOpen}
+                  aria-haspopup="true"
+                >
+                  <img
+                    src={profile}
+                    alt="Profile"
+                    className="HeaderContainer-profile"
+                  />
+                </button>
+                {isProfileMenuOpen && (
+                  <div className="HeaderProfileMenu-dropdown">
+                    <button type="button" onClick={navigateToProfile}>Profile</button>
+                    <button type="button" onClick={handleLogout}>Log out</button>
+                  </div>
+                )}
+              </div>
             ): 
             <>
             <button onClick={navigateToLogin} className="HeaderButton--login">Login</button>

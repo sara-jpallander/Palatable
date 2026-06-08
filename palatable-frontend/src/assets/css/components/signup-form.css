@@ -51,6 +51,12 @@
 .SignupForm-container-form button {
     border: none;
     text-align: center;
-    background-color: var(--color-pink);
+    background-color: var(--color-gray-strong);
+    color: var(--color-light);
     font: var(--fs-label-s);
+    transition: var(--transition);
+}
+
+.SignupForm-container-form button:hover {
+    background-color: var(--color-dark);
 }
