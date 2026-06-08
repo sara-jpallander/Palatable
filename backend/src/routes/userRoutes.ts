@@ -2,6 +2,7 @@
 import express from "express";
 import type { Request, Response } from "express";
 import userValidation from "../validation/user.schema.ts"
+import type { ZodError } from "zod";
 import bcrypt from "bcrypt";
 import jwt, { type JwtPayload } from "jsonwebtoken";
 import createJWT from "../validation/createJWT.ts";
@@ -28,6 +29,16 @@ const capitalize = <T extends string>(s: T) => {
   return (s[0]!.toUpperCase() + s.slice(1).toLowerCase()) as Capitalize<T>;
 };
 
+/* Builds error messages from Zod validation so the client sees the specific issue, e.g. "Password must be at least 8 characters" */
+
+const formatValidationError = (error: ZodError) => {
+  const issue = error.issues[0];
+  return {
+    message: issue?.message ?? "Validation failed",
+    field: issue?.path[0] ?? null,
+  };
+};
+
 
 
 // CREATE USER
@@ -41,7 +52,7 @@ async function createUser(req: Request, res: Response) {
       const parsed = userValidation.safeParse(req.body);
 
       if (!parsed.success) {
-        return res.status(400).json({ error: "Validering misslyckades. ", details: parsed.error });
+        return res.status(400).json(formatValidationError(parsed.error));
       };
 
       // Kryptera lösenord
@@ -53,7 +64,7 @@ async function createUser(req: Request, res: Response) {
       // Skickar tillbaka rätt status kod samt skapar en token direkt när man registrerar så att man kan bli inloggad direkt efter skapat konto.
       const token = createJWT(user); 
       res.status(201).json({ 
-        message: "Användaren skapad", 
+        message: "User created", 
         token: token, 
         user: {
           id: user._id.toString(),
@@ -62,7 +73,7 @@ async function createUser(req: Request, res: Response) {
         } 
       });
     } catch (error) {
-    	res.status(500).json({ message: `Internal server error. Misslyckades att skapa användare. ${error}` });
+    	res.status(500).json({ message: `Internal server error. Failed to create user. ${error}` });
     };
 };
 
@@ -77,26 +88,26 @@ async function userLogin(req: Request, res: Response) {
     }).lean();
 
     if (!user) {
-      return res.status(404).json({ error: "Användaren finns inte" })
+      return res.status(404).json({ error: "User does not exist" })
     }
 
     // Kontrollera lösenordet
     const validPassword = await bcrypt.compare(req.body.password, user.password)
 
     if (!validPassword) {
-      return res.status(400).json({ message: "Fel lösenord" });
+      return res.status(400).json({ message: "Incorrect password" });
     }; // returnerar statuskoden som meddelande istället för "incorrect password"
 
     // Skapa token
     const token = createJWT(user);
 
-    res.status(200).json({ message: "Login har lyckats!", token: token, user: {
+    res.status(200).json({ message: "Login successful", token: token, user: {
       id: user._id.toString(),
       name: user.name,
       email: user.email
     } });
   } catch (error) {
-    res.status(500).json({ message: `Internal server error. Misslyckad inloggning. ${error}` });
+    res.status(500).json({ message: `Internal server error. Login failed. ${error}` });
   }
 };
 
@@ -113,11 +124,11 @@ async function getUserById(req: ProtectedRequest, res: Response) {
 
     // Felhantering
     if (!bearerToken || bearerToken === undefined) {
-      return res.status(404).json({ message: "Token kunde inte hittas." })
+      return res.status(404).json({ message: "Token could not be found." })
     }
 
     if (!process.env.JWT_SECRET) {
-      return res.status(404).json({ message: "JWT_SECRET kunde inte hittas." })
+      return res.status(404).json({ message: "JWT_SECRET could not be found." })
     }
 
     // Avkoda token - få fram requested user id genom decoded.id
@@ -130,11 +141,11 @@ async function getUserById(req: ProtectedRequest, res: Response) {
       return res.status(200).json({ message: "User: ", data: user })
       // Märker att den här requesten tar lång tid...
     } else {
-      return res.status(409).json({error: "Token matchar inte efterfrågade användaren."})
+      return res.status(409).json({error: "Token does not match the requested user."})
     }
     
   } catch (error) {
-      res.status(500).json({ message: `Internal server error. Misslyckades att hämta användereb - authentisering misslyckades. ${error}` });
+      res.status(500).json({ message: `Internal server error. Failed to fetch user - authentication failed. ${error}` });
   }
 };
 
@@ -145,13 +156,13 @@ async function getUsers(req: Request, res: Response) {
     const users = await User.find();
 
     if (!users) {
-      return res.status(404).json({ message: "Den efterfrågade responsen misslyckades." });
+      return res.status(404).json({ message: "The requested response failed." });
     }
 
-    res.status(200).json({ message: "Här är alla användare:", data: users });
+    res.status(200).json({ message: "Here are all users:", data: users });
     
   } catch (error) {
-    res.status(500).json({ message: `Internal server error. Misslyckades att hämta alla användare. ${error}` });
+    res.status(500).json({ message: `Internal server error. Failed to fetch all users. ${error}` });
   }
 }
 
@@ -172,7 +183,7 @@ async function updateUserById(req: Request, res: Response) {
     const parsed = userValidation.partial().safeParse(req.body);
 
     if (!parsed.success) {
-      return res.status(400).json({ error: "Validering misslyckades.", details: parsed.error });
+      return res.status(400).json(formatValidationError(parsed.error));
     };
 
     // Kryptera nytt lösenord
@@ -186,12 +197,12 @@ async function updateUserById(req: Request, res: Response) {
     });
 
     if (!user) {
-      return res.status(404).json({ error: "Efterfrågade användaren finns inte"});
+      return res.status(404).json({ error: "Requested user does not exist"});
     }
 
-    res.status(201).json({ message: "Användaren uppdaterad", data: user });
+    res.status(201).json({ message: "User updated", data: user });
   } catch (error) {
-      res.status(500).json({ message: `Internal server error. Misslyckades att uppdatera användaren. ${error}` });
+      res.status(500).json({ message: `Internal server error. Failed to update user. ${error}` });
   }
 };
 
@@ -204,12 +215,12 @@ async function deleteUserById(req: Request, res: Response) {
     const user = await User.findByIdAndDelete(req.params.id);
 
     if (!user) {
-      return res.status(404).json({ error: "Efterfrågade användaren finns inte"});
+      return res.status(404).json({ error: "Requested user does not exist"});
     }
     
-    res.status(200).json({ message: "Lyckades att ta bort användaren", data: user })
+    res.status(200).json({ message: "User removed successfully", data: user })
   } catch (error) {
-    res.status(500).json({ message: `Internal server error. Misslyckades att ta bort användaren. ${error}` });
+    res.status(500).json({ message: `Internal server error. Failed to delete user. ${error}` });
   };
 };
 

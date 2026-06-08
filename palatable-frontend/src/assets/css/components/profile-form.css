@@ -1,4 +1,4 @@
-.LoginForm-container{
+.ProfileForm-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,7 +6,7 @@
 
 }
 
-.LoginForm-container-form{
+.ProfileForm-container-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,7 +14,7 @@
     gap: 1rem;
 }
 
-.LoginForm-container-form label {
+.ProfileForm-container-form label {
     display: block;
     align-self: flex-start;
     text-align: left;
@@ -22,8 +22,8 @@
     color: var(--color-dark);
 }
 
-.LoginForm-container-form input,
-.LoginForm-container-form button {
+.ProfileForm-container-form input,
+.ProfileForm-container-form button {
     box-sizing: border-box;
     width: 30vw;
     height: 5vh;
@@ -34,21 +34,7 @@
     color: var(--color-dark);
 }
 
-.LoginForm-container-form input.LoginForm-input--error,
-.LoginForm-container-form input.LoginForm-input--error:focus {
-    border: solid #C62828 2px;
-    outline: none;
-}
-
-.LoginForm-error {
-    width: 30vw;
-    margin: 0;
-    font: var(--fs-body-s);
-    color: #C62828;
-    text-align: left;
-}
-
-.LoginForm-container-form button {
+.ProfileForm-container-form button {
     border: none;
     text-align: center;
     background-color: var(--color-gray-strong);
@@ -57,6 +43,6 @@
     transition: var(--transition);
 }
 
-.LoginForm-container-form button:hover {
+.ProfileForm-container-form button:hover {
     background-color: var(--color-dark);
 }

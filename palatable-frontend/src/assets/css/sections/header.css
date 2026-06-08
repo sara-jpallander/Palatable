@@ -10,6 +10,42 @@ header {
     width: 31.4rem;
 }
 
+.HeaderProfileMenu {
+    position: relative;
+}
+
+.HeaderProfileMenu-trigger {
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.HeaderProfileMenu-trigger:hover {
+    filter: brightness(105%);
+}
+
+.HeaderContainer-profile {
+    display: block;
+    width: 5.7rem;
+}
+
+.HeaderProfileMenu-dropdown {
+    position: absolute;
+    top: calc(100% + var(--spacing-3xs));
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    min-width: 14rem;
+    padding: var(--spacing-3xs);
+    background-color: var(--color-light);
+    border: var(--border);
+    border-radius: var(--spacing-3xs);
+    box-shadow: 0 0.4rem 1.2rem rgba(44, 44, 44, 0.1);
+    z-index: 10;
+}
+
 .HeaderContainer-buttons {
     width: fit-content;
 }
@@ -23,6 +59,24 @@ header {
 
 .HeaderContainer-buttons button:hover {
     filter: brightness(105%);
+}
+
+.HeaderProfileMenu-dropdown button {
+    font: var(--fs-label-s);
+    mix-blend-mode: normal;
+    color: var(--color-dark);
+    text-align: left;
+    padding: var(--spacing-3xs) var(--spacing-xs);
+    border: none;
+    border-radius: var(--spacing-4xs);
+    background: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.HeaderProfileMenu-dropdown button:hover {
+    filter: none;
+    background-color: var(--color-gray-soft);
 }
 
 .HeaderButton--login {
