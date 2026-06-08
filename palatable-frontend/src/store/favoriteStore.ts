@@ -10,29 +10,37 @@ type Palette = {
 }
 
 type FavState = {
-  favorites: Palette[],
-  toggleFavorites: (palette: Palette) => void,
-  isFavorite: (theme: string) => boolean
+  favorites: { [userId: string]: Palette[] },
+  toggleFavorites: (userId: string, palette: Palette) => void,
+  isFavorite: (userId: string, theme: string) => boolean
 }
 
 export const favoriteStore = create<FavState>() (
   persist(
     (set, get) => ({
-      favorites: [],
-      toggleFavorites: (palette) => {
+      favorites: {},
+      toggleFavorites: (userId, palette) => {
       const current = get().favorites;
-      const exists = current.find((p) => p.theme === palette.theme);
+      const userFavorites = current[userId] || [];
+      const exists = userFavorites.find((p) => p.theme === palette.theme);
 
+      let updatedList;
       //Kollar om en favorit redan existerar i din profil och ersätter den.
-      if(exists){
-        set({favorites: current.filter((p) => p.theme !== palette.theme)})
-        //Annars lägg till.
-      }else{
-        set({favorites: [...current, palette]});
+      if (exists) {
+        updatedList = userFavorites.filter((p) => p.theme !== palette.theme);
+      } else {
+        updatedList = [...userFavorites, palette];
       }
+      set({
+        favorites: {
+          ...current,
+          [userId]: updatedList
+        }
+      });
       },
-      isFavorite: (theme) => {
-        return get().favorites.some((p) => p.theme === theme);
+      isFavorite: (userId, theme) => {
+        const userFavorites = get().favorites[userId] || [];
+        return userFavorites.some((p) => p.theme === theme);
       },
     }),
     {name: 'favorite-storage'}

@@ -12,6 +12,7 @@ const profilePage = () => {
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState('');
   const favorites = favoriteStore((state) => state.favorites);
+  const userFavorites = user ? favorites[user.id] || [] : [];
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -90,8 +91,8 @@ const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
         <div className="Favorites-section">
           <h2>Mina Favoriter</h2>
           <div className="CardPalette-slider">
-            {favorites.length > 0 ? (
-              favorites.map((item) => (
+          {userFavorites.length > 0 ? (
+              userFavorites.map((item) => (
                 <PaletteCard 
                   key={item.theme} 
                   theme={item.theme} 
