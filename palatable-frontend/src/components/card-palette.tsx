@@ -3,6 +3,7 @@ import heart from '../assets/images/heart.svg'
 import greenCheck from '../assets/images/green_check.svg'
 import DownloadButtons from './ButtonsForCards/downLoadButtons'
 import { favoriteStore } from '../store/favoriteStore'
+import { useAuthStore } from '../store/authStore'
 
 interface PaletteCardProps {
   theme: string;
@@ -14,10 +15,15 @@ interface PaletteCardProps {
 function PaletteCard({ theme, rating, palette, files }: PaletteCardProps) {
 
   const toggleFavorite = favoriteStore((state) => state.toggleFavorites);
-  const isFavorite = favoriteStore((state) => state.isFavorite(theme));
+  const user = useAuthStore((state) => state.user);
+  const isFavorite = favoriteStore((state) => user ? state.isFavorite(user.id, theme) : false);
 
   const handleLike = () => {
-    toggleFavorite({theme, rating, palette, files})
+    if (!user) {
+      alert("Du måste vara inloggad för att spara favoriter!");
+      return;
+    }
+    toggleFavorite(user.id, { theme, rating, palette, files }); // 4. Skicka med user.id här också
   }
 
   return (
