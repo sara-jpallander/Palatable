@@ -124,7 +124,7 @@ const signupForm = () => {
                 <p className="Signup Form-error" role="alert">{errorMessage}</p>
                 )}
                 
-                <button type="submit">Register</button>
+                <button type="submit" className="button--black">Register</button>
             </form>
         </div>
         </>

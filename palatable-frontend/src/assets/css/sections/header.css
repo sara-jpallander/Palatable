@@ -12,6 +12,7 @@ header {
 
 .HeaderContainer-logo {
     width: 31.4rem;
+    cursor: pointer;
 
     @media (max-width: 769px) {
         width: 22rem;
@@ -65,10 +66,6 @@ header {
     mix-blend-mode: multiply;
     color: var(--color-dark);
     transition: var(--transition);
-
-    /* @media (max-width: 769px) {
-        font: var(--fs-body-s);
-    } */
 }
 
 .HeaderContainer-buttons button:hover {
@@ -97,14 +94,6 @@ header {
     background-color: var(--color-yellow);
     padding: var(--spacing-4xs) var(--spacing-l);
     border-radius: 3rem;
-
-/*     @media (max-width: 769px) {
-        display: block;
-        padding: var(--spacing-4xs) 0;
-        width: 9rem;
-        text-align: center;
-    } */
-    
 }
 
 .HeaderButton--register {
@@ -117,18 +106,6 @@ header {
     @media (max-width: 769px) {
         margin-left: -4.3rem;
     }
-
-/*     @media (max-width: 769px) {
-        display: block;
-        border-radius: 0;
-        padding: var(--spacing-4xs) 0;
-        width: 9rem;
-        text-align: center;
-        margin-top: 0.5rem;
-        margin-left: 0;
-        border-radius: 3rem;
-        corner-shape:initial;
-    } */
 }
 
 .MenuBtn {
@@ -153,16 +130,6 @@ header {
     transition: height 0.3s ease-out;
 }
 
-/* .MobileMenu > button {
-    opacity: 0;
-
-    transition: opacity 0.3s ease-in;
-}
- */
 .MobileMenu.is-active {
     height: 200px;
 }
-
-/* .MobileMenu.is-active > button {
-    opacity: 1;
-} */

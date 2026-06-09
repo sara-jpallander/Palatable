@@ -5,11 +5,11 @@ import { favoriteStore } from '../store/favoriteStore';
 import PaletteCard from '../components/card-palette';
 
 const profilePage = () => {
-    const user = useAuthStore((state) => state.user);
-    const token = useAuthStore((state) => state.token);
-    const login = useAuthStore((state) => state.login);
-  const [name, setName] = useState(user.name);
-  const [email, setEmail] = useState(user.email);
+  const user = useAuthStore((state) => state.user);
+  const token = useAuthStore((state) => state.token);
+  const login = useAuthStore((state) => state.login);
+  const [name, setName] = useState(user!.name);
+  const [email, setEmail] = useState(user!.email);
   const [password, setPassword] = useState('');
   const favorites = favoriteStore((state) => state.favorites);
   const userFavorites = user ? favorites[user.id] || [] : [];
@@ -33,31 +33,31 @@ const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     
 
     try {
-        const res = await fetch(`http://localhost:3008/users/${user.id}`, {
-            method: "PUT",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              name,
-              email,
-              ...(password && { password }),
-            }),
-          });
-          const data = await res.json();
+      const res = await fetch(`http://localhost:3008/users/${user!.id}`, {
+          method: "PUT",
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            ...(password && { password }),
+          }),
+        });
+        const data = await res.json();
 
-          if (!res.ok) {
-            alert(data.message || data.error || 'Update failed');
-            return;
-          }
+        if (!res.ok) {
+          alert(data.message || data.error || 'Update failed');
+          return;
+        }
 
-          login(token!, {
-            id: user.id,
-            name: data.data.name,
-            email: data.data.email,
-          });
-          setPassword('');
-          alert("Update successful");
+        login(token!, {
+          id: user!.id,
+          name: data.data.name,
+          email: data.data.email,
+        });
+        setPassword('');
+        alert("Update successful");
 
     }
     catch {
@@ -69,27 +69,26 @@ const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
   return (
     <>
     {user ? (
-        <>
-      <div>
-      <h2>Profile Page</h2>
-      </div>
-      <div className="ProfileForm-container">
-        <form className="ProfileForm-container-form" onSubmit={handleUpdate}>
-            <label htmlFor="name">Name</label>
-            <input type="text" id="name" name="name" value={name} onChange={handleNameChange} placeholder="Enter new name..."/>
+      <>
+        <div className="Profile FormContainer">
+          <form className="Profile FormContainer-form" onSubmit={handleUpdate}>
+            <h1>Welcome to your stuff {name}.</h1>
+            <h2>Need something changed?</h2>
+              <label htmlFor="name">Name</label>
+              <input type="text" id="name" name="name" value={name} onChange={handleNameChange} placeholder="New name"/>
 
-            <label htmlFor="email">Email</label>
-            <input type="text" id="email" name="email" value={email} onChange={handleEmailChange} placeholder="Enter new email..."/>
+              <label htmlFor="email">Email</label>
+              <input type="text" id="email" name="email" value={email} onChange={handleEmailChange} placeholder="example@email.com"/>
 
-            <label htmlFor="password">Password</label>
-            <input type="password" autoComplete="off" id="password" name="password" value={password} onChange={handlePasswordChange} placeholder="Enter new password..."/>
+              <label htmlFor="password">Password</label>
+              <input type="password" autoComplete="off" id="password" name="password" value={password} onChange={handlePasswordChange} placeholder="••••••••"/>
 
-            
-            <button type="submit">Save</button>
-        </form>
+              
+              <button type="submit" className="button--black">Save</button>
+          </form>
         </div>
-        <div className="Favorites-section">
-          <h2>Mina Favoriter</h2>
+      <div className="SiteContainer Profile">
+          <h2>My Favorites</h2>
           <div className="CardPalette-slider">
           {userFavorites.length > 0 ? (
               userFavorites.map((item) => (
@@ -102,7 +101,7 @@ const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
                 />
               ))
             ) : (
-              <p>Du har inga sparade favoriter än.</p>
+              <p>No saved palettes yet.</p>
             )}
           </div>
         </div>

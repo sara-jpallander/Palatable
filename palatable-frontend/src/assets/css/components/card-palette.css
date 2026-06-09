@@ -124,23 +124,7 @@
 }
 
 .PaletteCard-container--bottom > button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacing-3xs);
-    width: 100%;
-    text-align: center;
-    font: var(--fs-label-m);
-    color: white;
-    background-color: var(--color-gray-strong);
     margin-top: var(--spacing-l);
-    border-radius: var(--spacing-xxs);
-    padding: var(--spacing-xxs) 0;
-    transition: var(--transition);
-}
-
-.PaletteCard-container--bottom > button:hover {
-    background-color: var(--color-dark);
 }
 
 .PaletteCard-container--bottom > button > img {
