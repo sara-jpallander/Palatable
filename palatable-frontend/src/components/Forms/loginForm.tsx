@@ -66,20 +66,22 @@ const loginForm = () => {
 
     return (
         <>
-         <div className="LoginForm-container">
-        <form className="LoginForm-container-form" onSubmit={handleLogin}>
-            <label htmlFor="email">Email</label>
-            <input className={getInputClassName('email')} type="text" id="email" name="email" value={email} onChange={handleEmailChange} placeholder="Enter your email..."/>
-
-            <label htmlFor="password">Password</label>
-            <input className={getInputClassName('password')} type="password" autoComplete="off" id="password" name="password" value={password} onChange={handlePasswordChange} placeholder="Enter your password..."/>
-
-            {errorMessage && (
-              <p className="LoginForm-error" role="alert">{errorMessage}</p>
-            )}
+         <div className="Login FormContainer">
             
-            <button type="submit">Log in</button>
-        </form>
+            <form className="Login FormContainer-form" onSubmit={handleLogin}>
+                <h1>It's you again!</h1>
+                <label htmlFor="email">Email</label>
+                <input className={getInputClassName('email')} type="text" id="email" name="email" value={email} onChange={handleEmailChange} placeholder="example@email.com"/>
+
+                <label htmlFor="password">Password</label>
+                <input className={getInputClassName('password')} type="password" autoComplete="off" id="password" name="password" value={password} onChange={handlePasswordChange} placeholder="••••••••"/>
+
+                {errorMessage && (
+                <p className="Login Form-error" role="alert">{errorMessage}</p>
+                )}
+                
+                <button type="submit">Log in</button>
+            </form>
         </div>
         </>
     )

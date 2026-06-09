@@ -9,8 +9,7 @@
 
 /* Components */
 @import 'components/card-palette.css';
-@import 'components/login-form.css';
-@import 'components/signup-form.css';
+@import 'components/form.css';
 @import 'components/profile-form.css';
 
 

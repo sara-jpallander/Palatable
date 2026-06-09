@@ -8,11 +8,30 @@ import { useNavigate } from 'react-router'
 import { useAuthStore } from '../store/authStore';
 
 function HeaderSection() {
-  const [isMenuOpen, setIsMoneuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
-    setIsMoneuOpen(!isMenuOpen);
+    setIsMenuOpen(!isMenuOpen);
   }
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  }
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMenuOpen]);
 
   const user = useAuthStore((state) => state.user);
   const logout = useAuthStore((state) => state.logout);
@@ -40,9 +59,12 @@ function HeaderSection() {
   }
 
   const navigateToLogin = () => {
+    closeMenu();
     navigate('/login')
   }
+
   const navigateToSignup = () => {
+    closeMenu();
     navigate('/signup')
   }
 
@@ -93,6 +115,7 @@ function HeaderSection() {
             </div> 
             
             <div 
+              ref={mobileMenuRef}
               className={
                 `HeaderContainer-buttons 
                 MobileMenu 
