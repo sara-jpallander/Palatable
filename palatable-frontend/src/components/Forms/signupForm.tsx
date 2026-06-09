@@ -107,23 +107,25 @@ const signupForm = () => {
 
     return (
         <>
-         <div className="SignupForm-container">
-        <form className="SignupForm-container-form" onSubmit={handleSignup}>
-            <label htmlFor="name">Name</label>
-            <input className={getInputClassName('name')} type="text" id="name" name="name" value={name} onChange={handleNameChange} placeholder="Enter your name..."/>
-
-            <label htmlFor="email">Email</label>
-            <input className={getInputClassName('email')} type="text" id="email" name="email" value={email} onChange={handleEmailChange} placeholder="Enter your email..."/>
-
-            <label htmlFor="password">Password</label>
-            <input className={getInputClassName('password')} type="password" autoComplete="off" id="password" name="password" value={password} onChange={handlePasswordChange} placeholder="Enter your password..."/>
-
-            {errorMessage && (
-              <p className="SignupForm-error" role="alert">{errorMessage}</p>
-            )}
+        <div className="Signup FormContainer">
             
-            <button type="submit">Register</button>
-        </form>
+            <form className="Signup FormContainer-form" onSubmit={handleSignup}>
+                <h1>There's always room for one more.</h1>
+                <label htmlFor="name">Name</label>
+                <input className={getInputClassName('name')} type="text" id="name" name="name" value={name} onChange={handleNameChange} placeholder="First name"/>
+
+                <label htmlFor="email">Email</label>
+                <input className={getInputClassName('email')} type="text" id="email" name="email" value={email} onChange={handleEmailChange} placeholder="example@email.com"/>
+
+                <label htmlFor="password">Password</label>
+                <input className={getInputClassName('password')} type="password" autoComplete="off" id="password" name="password" value={password} onChange={handlePasswordChange} placeholder="••••••••"/>
+
+                {errorMessage && (
+                <p className="Signup Form-error" role="alert">{errorMessage}</p>
+                )}
+                
+                <button type="submit">Register</button>
+            </form>
         </div>
         </>
     );
