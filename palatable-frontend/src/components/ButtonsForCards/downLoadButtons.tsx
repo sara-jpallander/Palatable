@@ -11,7 +11,7 @@ export default function DownloadButtons({ palette, files }: Props) {
         //för att man ska kunna zippa mappen behöver man skriva in mappens namn, samt vilka namn på filerna som finns i den. 
 
         <>
-          <button onClick={() => downloadPalette(palette, files)}>
+          <button className="button--black" onClick={() => downloadPalette(palette, files)}>
             Download
             <img src={download} alt="Download Icon" /> 
           </button>

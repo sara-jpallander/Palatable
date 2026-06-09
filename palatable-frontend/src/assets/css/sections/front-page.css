@@ -1,6 +1,5 @@
 .SiteContainer h1 {
     margin-left: -1.5rem;
-    /* margin-bottom: var(--spacing-4xs); */
 
     @media (max-width: 769px) {
         margin-left: -0.8rem;
@@ -88,7 +87,6 @@
         overflow: visible;
         margin-right: 0;
         padding-left: 0;
-        /* width: calc(95vw - var(--site-margin)); */
         width: 100%;
         margin-top: var(--spacing-xl);
         flex-wrap: wrap;

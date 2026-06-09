@@ -80,7 +80,7 @@ const loginForm = () => {
                 <p className="Login Form-error" role="alert">{errorMessage}</p>
                 )}
                 
-                <button type="submit">Log in</button>
+                <button type="submit" className="button--black">Log in</button>
             </form>
         </div>
         </>

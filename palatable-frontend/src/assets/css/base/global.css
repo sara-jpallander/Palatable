@@ -25,6 +25,24 @@ p {
     font: var(--fs-body-m);
 }
 
+.button--black {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-3xs);
+    width: 100%;
+    font: var(--fs-label-m);
+    color: white;
+    background-color: var(--color-gray-strong);
+    border-radius: 3rem;
+    padding: var(--spacing-xxs) 0;
+    transition: var(--transition);
+
+    &:hover {
+        background-color: var(--color-dark);
+    }
+}
+
 .SiteContainer,
 .HeaderContainer,
 .FooterContainer {
@@ -39,5 +57,27 @@ p {
 
     @media (max-width: 769px) {
         margin-top: var(--spacing-xxl);
+    }
+}
+
+.Profile.SiteContainer h2 {
+    font: var(--fs-heading-m);
+    display: block;
+    width: 100%;
+}
+
+.Profile.SiteContainer .CardPalette-slider {
+    overflow: visible;
+    margin-right: 0;
+    padding-left: 0;
+    width: 100%;
+    margin-top: var(--spacing-xl);
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @media (max-width: 854px) {
+        margin-left: calc(50% - 50vw);
+        width: 100vw;
+        padding-left: 3.2rem;
     }
 }

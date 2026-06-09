@@ -31,10 +31,18 @@
     font-size: clamp(4.3rem, 10vw, 7.4rem);
     margin-bottom: var(--spacing-m);
     line-height: 90%;
+    margin-left: 0 !important;
 }
 
-.FormContainer-form.Signup h1 {
+.FormContainer-form.Signup h1,
+.FormContainer-form.Profile h1 {
     font-size: clamp(3.1rem, 8vw, 5.2rem);
+}
+
+.FormContainer-form.Profile h2 {
+    font: var(--fs-heading-s);
+    font-size: clamp(2.1rem, 4vw, 3.6rem);
+    margin: var(--spacing-3xs) 0;
 }
 
 .FormContainer-form label {
@@ -84,15 +92,6 @@
 }
 
 .FormContainer-form button {
-    border: none;
-    text-align: center;
-    padding: var(--spacing-3xs) 0;
-    border-radius: var(--spacing-3xs);
-    
-    background-color: var(--color-gray-strong);
-    color: var(--color-light);
-    font: var(--fs-label-l);
-    transition: var(--transition);
     margin-top: var(--spacing-3xs);
 }
 

@@ -9,8 +9,8 @@
 }
 
 .ai-chat-button {
-    width: 6rem;
-    height: 6rem;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
     background-color: var(--color-dark);
     color: var(--color-light);
