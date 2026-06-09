@@ -2,6 +2,8 @@ import '../assets/css/index.css'
 import heart from '../assets/images/heart.svg'
 import greenCheck from '../assets/images/green_check.svg'
 import DownloadButtons from './ButtonsForCards/downLoadButtons'
+import { favoriteStore } from '../store/favoriteStore'
+import { useAuthStore } from '../store/authStore'
 
 interface PaletteCardProps {
   theme: string;
@@ -11,6 +13,18 @@ interface PaletteCardProps {
 }
 
 function PaletteCard({ theme, rating, palette, files }: PaletteCardProps) {
+
+  const toggleFavorite = favoriteStore((state) => state.toggleFavorites);
+  const user = useAuthStore((state) => state.user);
+  const isFavorite = favoriteStore((state) => user ? state.isFavorite(user.id, theme) : false);
+
+  const handleLike = () => {
+    if (!user) {
+      alert("Du måste vara inloggad för att spara favoriter!");
+      return;
+    }
+    toggleFavorite(user.id, { theme, rating, palette, files }); // 4. Skicka med user.id här också
+  }
 
   return (
     <div className={`PaletteCard-container ${theme}`}>
@@ -33,7 +47,12 @@ function PaletteCard({ theme, rating, palette, files }: PaletteCardProps) {
           <section className='PaletteCard-title flex-SpaceBetween'>
             {/* title */}
             <h2>{theme}</h2>
-            <img src={heart} alt="Like Button Heart" />
+            <img src={heart} onClick={handleLike}
+             style={{ 
+            cursor: 'pointer',
+            filter: isFavorite ? 'invert(20%) sepia(100%) saturate(500%) hue-rotate(350deg)' : 'none' 
+            }}  
+            alt="Like Button Heart" />
           </section>
           <p><img src={greenCheck} alt="WCAG Grade Check" />{rating}</p>
           <DownloadButtons palette={palette} files={files}/>
