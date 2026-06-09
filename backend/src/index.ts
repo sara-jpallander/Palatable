@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv"
 import userRoutes from "./routes/userRoutes.ts"
 import cors from 'cors'
+import aiRoutes from "./routes/aiRoutes.ts";
+
 
 
 /* ///////////// CONFIGS ///////////////// */
@@ -40,3 +42,4 @@ app.get("/", (req, res) => {
 
 
 app.use("/users", userRoutes);
+app.use("/ai", aiRoutes);
