@@ -7,6 +7,7 @@ import ProfilePage from "./pages/profilePage";
 import LoginPage from "./pages/loginPage";
 import SignupPage from "./pages/signupPage";
 import MainPage from "./pages/mainPage";
+import AIchat from "./components/AI/ai-chat";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="profile" element={<ProfilePage />} />
         </Routes>
       <FooterSection />
+      <AIchat />
       </Router>
     </>
   );
